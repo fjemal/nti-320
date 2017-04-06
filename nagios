@@ -3,7 +3,7 @@
 
 yum install epel-release
 yum install -y httpd php
-yum install gd gd-devel gcc glibc glibc-common wget
+yum install gd gd-devel gcc glibc glibc-common wget unzip
 useradd -m nagios
 passwd nagios
 groupadd nagcmd
@@ -16,8 +16,8 @@ wget http://nagios-plugins.org/download/nagios-plugins-2.2.0.tar.gz
 #mkdir ~/nagios
 #cd ~/nagios
 #extract the file with tar:
-tar zxvf nagios-4.2.0.tar.gz
-cd nagios-4.2.0
+tar zxvf nagios-4.3.1.tar.gz
+cd nagios-4.3.1
 ./configure --with-command-group=nagcmd
 make all
 make install
@@ -30,34 +30,34 @@ make install -webconf
 htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
 password:
 systemctl restart httpd
-tar zxvf nagios-plugins-2.1.2.tar.gz
-cd ~/nagios/nagios-plugins-2.1.2
+tar zxvf nagios-plugins-2.2.0.tar.gz
+cd ~/nagios/nagios-plugins-2.2.0
 ./configure --with-nagios-user=nagios --with-nagios-group=nagios
 make
 make install
 #edit the next file and add your email
-vi /usr/local/nagios/etc/objects/contacts.cfg
+#vi /usr/local/nagios/etc/objects/contacts.cfg
 #edit the following config tiles and comment and uncomment
-vi /etc/httpd/conf.d/nagios.conf
+#vi /etc/httpd/conf.d/nagios.conf
 ## Comment the following lines ##
 #   Order allow,deny
 #   Allow from all
 ## Uncomment and Change lines as shown below ##
-Order deny,allow
-Deny from all
-Allow from 127.0.0.1 *
+#Order deny,allow
+#Deny from all
+#Allow from 127.0.0.1 *
 systemctl restart httpd
 /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
 chkconfig --add nagios
 chkconfig --level 35 nagios on
-  systemctl start nagios.service
-vi /etc/selinux/config
-And, set SELinux to permissive mode.
-[...
-SELINUX=permissive
+systemctl start nagios.service
+#vi /etc/selinux/config
+#And, set SELinux to permissive mode.
+#[...
+#SELINUX=permissive
 #Reboot your server to take effects the changes.
 #access nagios web interface
-http://IP-Address/nagios
+#http://IP-Address/nagios
 
 
 
