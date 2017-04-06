@@ -1,3 +1,6 @@
+#!/bin/bash
+#isnstall apache
+
 yum install epel-release
 yum install -y httpd php
 yum install gd gd-devel gcc glibc glibc-common wget
@@ -8,8 +11,8 @@ usermod -a -G nagcmd nagios
 usermod -a -G nagcmd apache
 
 #download the package from the internet
-wget http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-4.2.0.tar.gz
-wget http://nagios-plugins.org/download/nagios-plugins-2.1.2.tar.gz
+wget http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-4.3.1.tar.gz
+wget http://nagios-plugins.org/download/nagios-plugins-2.2.0.tar.gz
 #mkdir ~/nagios
 #cd ~/nagios
 #extract the file with tar:
