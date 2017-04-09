@@ -5,96 +5,61 @@ yum install epel-release
 yum install -y httpd 
 systemctl start httpd
 systemctl enable httpd
-sudo yum install -y gcc glibc glibc-common gd gd-devel make net-snmp openssl-devel xinetd unzip
+#Disable SELinux
+setenforce 0
+#Modify /etc/selinux/config and change enforcing to disabled.
+#Install Prerequisites
+yum install httpd php php-cli gcc glibc glibc-common gd gd-devel net-snmp openssl-devel wget unzip -y
 
-sudo useradd nagios
-sudo groupadd nagcmd
+#create a user and group for Nagios to use.
+useradd nagios
 
-sudo usermod -a -G nagcmd nagios
+groupadd nagcmd
 
+usermod -a -G nagcmd nagios
 
-#download the package from the internet
-cd ~
- curl -L -O https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.3.1.tar.gz
-#extract the file with tar:
-tar zxvf nagios-4.3.1.tar.gz
+usermod -a -G nagcmd apache 
+
+#Download and Install Nagios and nagios-plugins
+cd /tmp
+wget https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.3.1.tar.gz
+tar zxf nagios-4.3.1.tar.gz
+
+wget http://www.nagios-plugins.org/download/nagios-plugins-2.2.0.tar.gz
+
+tar zxf nagios-plugins-2.2.0.tar.gz
+
 cd nagios-4.3.1
-./configure --with-command-group=nagcmd
 
-#compile Nagios and make command to install nagios:
+#Now that the files are extracted, let's start compiling Nagios!
+./configure --with-command-group=nagcmd
 make all
+
 make install
+
 make install-init
-make install-commandmode
+
 make install-config
+
+make install-commandmode
+
 make install-webconf
 
-sudo usermod -G nagcmd apache
+#Creating a password for nagiosadmin
+htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
 
 #Install Nagios Plugins
-cd ~
-curl -L -O http://nagios-plugins.org/download/nagios-plugins-2.2.0.tar.gz
-#wget http://nagios-plugins.org/download/nagios-plugins-2.2.0.tar.gz
-tar xvf nagios-plugins-2.2.0.tar.gz
+cd /tmp/nagios-plugins-2.2.0
 
-#change to the nagios plugins dir
-cd nagios-plugins-2.2.0
 ./configure --with-nagios-user=nagios --with-nagios-group=nagios --with-openssl
-make
+
+make all 
+
 make install
 
-#INSTALL NRPE
-
-cd ~
-curl -L -O http://downloads.sourceforge.net/project/nagios/nrpe-2.x/nrpe-2.15/nrpe-2.15.tar.gz
-
-tar xvf nrpe-2.15.tar.gz
-cd nrpe-2.15
-./configure --enable-command-args --with-nagios-user=nagios --with-nagios-group=nagios --with-ssl=/usr/bin/openssl --with-ssl-lib=/usr/lib/x86_64-linux-gnu
-make all
-sudo make install
-sudo make install-xinetd
-sudo make install-daemon-config
-
-#edit the following file and add your nagios internal ip address
-#vi /etc/xinetd.d/nrpe
-#only_from = 127.0.0.1 10.128.0.0/24
-service xinetd restart
-#edit the following file
-#vi /etc/httpd/conf.d/nagios.conf
-#vi /usr/local/nagios/etc/nagios.cfg and uncomment the following line
-#cfg_dir=/usr/local/nagios/etc/servers
-mkdir /usr/local/nagios/etc/servers
-
-htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin 
-#password:nti320
-systemctl restart httpd
-
-systemctl restart httpd
-/usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
-chkconfig --add nagios
-chkconfig --level 35 nagios on
-systemctl start nagios.service
-
-chown nagios.nagios /usr/local/nagios
-chown -R nagios.nagios /usr/local/nagios/libexec
-
-#tail -10 /usr/local/nagios/var/nagios.log
-
-chkconfig --add nagios
-chkconfig --level 35 nagios on
-systemctl start nagios.service
-#vi /etc/selinux/config
-#And, set SELinux to permissive mode.
-#[...
-#SELINUX=permissive
-#Reboot your server to take effects the changes.
-#access nagios web interface
-#http://IP-Address/nagios
-
-
-
-
+#Start Nagios
+service httpd start 
+service nagios start
 
 
 
