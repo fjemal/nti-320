@@ -9,7 +9,7 @@ systemctl enable httpd
 setenforce 0
 #Modify /etc/selinux/config and change enforcing to disabled.
 #Install Prerequisites
-yum install httpd php php-cli gcc glibc glibc-common gd gd-devel net-snmp openssl-devel wget unzip -y
+yum install php php-cli gcc glibc glibc-common gd gd-devel net-snmp openssl-devel wget unzip -y
 
 #create a user and group for Nagios to use.
 useradd nagios
