@@ -1,0 +1,36 @@
+#!/bin/bash
+#install nfs, run as a root
+yum -y install nfs-utils
+
+start nfs server and services
+systemctl enable nfs-server.service
+systemctl start nfs-server.service
+systemctl enable nfs-server
+systemctl enable nfs-lock
+systemctl enable nfs-idmapd
+systemctl enable rpcbind
+systemctl start rpcbind
+systemctl start nfs-lock
+systemctl start nfs-idmap
+
+
+#make directories and ownership
+mkdir /var/dev
+chown nfsnobody:nfsnobody /var/dev
+chmod -R 777 /var/dev
+mkdir /var/config
+chown nfsnobody:nfsnobody /var/config
+chmod -R 777 /var/config
+
+# use internal IPs
+echo "/home    *(rw,sync,no_all_squash)  
+/var/dev       *(rw,sync,no_all_squash)
+/var/config    *(rw,sync,no_all_squash)" >> /etc/exports     
+
+#make changes take effect
+
+#add the nfs service to override firewall-cmd
+firewall-cmd --permanent --zone=public --add-service=nfs
+firewall-cmd --reload
+exportfs -a
+systemctl restart nfs-server
