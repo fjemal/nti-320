@@ -1,10 +1,4 @@
 #!/bin/bash
-#isnstall apache
-
-yum install epel-release
-yum install -y httpd 
-systemctl start httpd
-systemctl enable httpd
 #Disable SELinux
 setenforce 0
 #Modify /etc/selinux/config and change enforcing to disabled.
