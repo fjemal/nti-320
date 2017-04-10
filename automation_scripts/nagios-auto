@@ -4,7 +4,8 @@ setenforce 0
 #Modify /etc/selinux/config and change enforcing to disabled.
 #Install Prerequisites
 yum install httpd php php-cli gcc glibc glibc-common gd gd-devel net-snmp openssl-devel wget unzip -y
- 
+#https://www.unixmen.com/install-configure-nagios-4-centos-7/
+#http://www.itzgeek.com/how-tos/linux/centos-how-tos/monitor-centos-7-rhel-7-using-nagios-4-0-7.html
 #create a user and group for Nagios to use.
 useradd nagios
 
