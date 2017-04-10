@@ -1,0 +1,59 @@
+#Disable SELinux
+setenforce 0
+#Modify /etc/selinux/config and change enforcing to disabled.
+#Install Prerequisites
+yum install httpd php php-cli gcc glibc glibc-common gd gd-devel net-snmp openssl-devel wget unzip -y
+
+#create a user and group for Nagios to use.
+useradd nagios
+
+groupadd nagcmd
+
+usermod -a -G nagcmd nagios
+
+usermod -a -G nagcmd apache 
+
+#Download and Install Nagios and nagios-plugins
+cd /tmp
+wget https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.3.1.tar.gz
+tar zxf nagios-4.3.1.tar.gz
+
+wget http://www.nagios-plugins.org/download/nagios-plugins-2.2.0.tar.gz
+
+tar zxf nagios-plugins-2.2.0.tar.gz
+
+cd nagios-4.3.1
+
+#Now that the files are extracted, let's start compiling Nagios!
+./configure --with-command-group=nagcmd
+make all
+
+make install
+
+make install-init
+
+make install-config
+
+make install-commandmode
+
+make install-webconf
+
+#Creating a password for nagiosadmin
+htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
+
+#Install Nagios Plugins
+cd /tmp/nagios-plugins-2.2.0
+
+./configure --with-nagios-user=nagios --with-nagios-group=nagios --with-openssl
+
+make all 
+
+make install
+mkdir /usr/local/nagios/etc/servers
+
+#Start Nagios
+service httpd start 
+service nagios start
+
+
+
