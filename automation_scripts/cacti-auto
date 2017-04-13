@@ -1,0 +1,62 @@
+#step 1
+yum install -y httpd httpd-devel
+#step 2
+yum -y install mariadb-server
+#step 3
+yum -y install php-mysql php-pear php-common php-gd php-devel php php-mobstring php-cli
+#step 4
+yum -y install php-snmp
+#step 5
+yum -y install net-snmp-utils net-snmp-libs
+step 6
+yum -y install rrdtool
+step 7
+systemctl start httpd.service
+systemctl start mariadb.service
+systemctl start snmpd.service
+
+#step 8
+systemctl enable httpd.service
+systemctl enable mariadb.service
+systemctl enable snmpd.service
+
+#step 9
+yum -y install cacti
+
+#step 10
+mysql_secure_installation
+
+#step 11
+mysql --user =root -p 
+pw:nti320
+create database cacti
+grant all on cacti.*nto cacti@localhost identified by 'nti320';
+flush privileges
+quite;
+
+#step 12
+mysql -u cacti -p cacti < /usr/share/doc/cacti-1.0.4/cacti.sql
+pw:
+
+#step 13
+#vim /etc/cacti/db.php 
+#vim /etc/httpd/conf.d/cacti.conf
+Require all granted
+
+Allow from all
+
+systemctl restart httpd.service
+systemctl stop firewlld.service
+
+
+#after you succeeded with cacti at cacti log file back to your terminal and 
+cd 
+ls log
+mkdir /var/log/cacti
+cd log
+pwd
+/usr/share/cacti/log
+touch cacti.log
+cd /var/log/
+
+mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root -p mysql
