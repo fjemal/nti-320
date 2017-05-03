@@ -11,6 +11,7 @@ sudo yum install redhat-rpm-config
 #to avoid possible system libraries and other files damage, you should NEVER build an RPM with the root user
 #To build RPMs with an unprivileged user, you must create a directory structure for that purpose, 
 #and then create the .rpmmacros file under your home directory overriding the default location of the RPM building tree to the one you created.
+
 mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
 echo '%_topdir %(echo $HOME)/rpmbuild' > ~/.rpmmacros
 
@@ -18,15 +19,13 @@ echo '%_topdir %(echo $HOME)/rpmbuild' > ~/.rpmmacros
 
 sudo yum install make
 
-
-
 Name:           test
 Version:        1.0
 Release:        1%{?dist}
 Summary:        Test server for centos 7
 Group:          NTI-320
 License:        open BSD licence
-URL:		 http://github.com/nti-320/wiki
+URL:		 http://github.com/nti-320
 Source0:        test-1.0.tar.gz
 #BuildRequires:
 #Requires:
@@ -53,6 +52,9 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %build : This is where you file is build, %_configure will run ./configure in tengine directory and you need to add "make %{?_smp_mflags} " to create a make file.
 %install : Where your software is installed with make install
 %files : The list of files that will be installed.
+
+sudo yum -y install yum-utils
+
 #Once you have your spec file is ready run the below command
 
 rpmbuild -ba test.spec
