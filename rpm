@@ -33,7 +33,7 @@ Source0:        test-1.0.tar.gz
 A test for centos 7 servers package. This shows how to install package and create 
 build server using rpm.
 %prep
-%setup %setup -n tengine-1.5.1
+%setup -n test-1
 %build
 %configure
 make %{?_smp_mflags}
