@@ -1,0 +1,8 @@
+check for error or warning by installing rpmlint 
+[fadliebra2012@rpm-b SPECS]$ rpmlint check_plugin.spec
+check_plugin.spec:6: W: non-standard-group NTI-320
+check_plugin.spec:26: W: macro-in-comment %{buildroot}
+check_plugin.spec:10: W: mixed-use-of-spaces-and-tabs (spaces: line 10, tab:
+ line 1)
+check_plugin.spec: W: invalid-url Source0: check_plugin-0.1.tar.gz
+0 packages and 1 specfiles checked; 0 errors, 4 warnings.
