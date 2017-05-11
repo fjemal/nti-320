@@ -1,0 +1,17 @@
+# If you don't want to use redhat-release rpm package you can create directory hierarchy manually, use the following steps.
+mkdir rpmbuild
+mkdir rpmbuild/SOURCES
+mkdir rpmbuild/SPECS
+
+#Create a directory with some sample files or scripts that you like to build in the package:
+mkdir check_plugin-0.1
+cd check_plugin-0.1
+#create simple file in shell
+#!/bin/bash
+echo "Hello NTI-320, this is a demo package to test the rpm-building practical"
+cd
+#Create an archive file based on your sample source:
+tar -czvf check_plugin-0.1.tar.gz check_plugin-0.1/
+#Now copy this source to /home/fadliebra2012/rpmbuild/SOURCES/
+cp check_plugin-0.1.tar.gz /home/fadliebra2012/rpmbuild/SOURCES/
+#create spec file
