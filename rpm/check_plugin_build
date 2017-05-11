@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "Hello NTI-320, this is a  package to test the rpm-building practical"
