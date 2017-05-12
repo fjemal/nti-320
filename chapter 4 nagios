@@ -1,0 +1,114 @@
+###############################################################################
+# CONTACTS.CFG - SAMPLE CONTACT/CONTACTGROUP DEFINITIONS
+#
+#
+# NOTES: This config file provides you with some example contact and contact
+#        group definitions that you can reference in host and service
+#        definitions.
+#       
+#        You don't need to keep these definitions in a separate file from your
+#        other object definitions.  This has been done just to make things
+#        easier to understand.
+#
+###############################################################################
+###############################################################################
+###############################################################################
+#
+# CONTACTS
+#
+###############################################################################
+###############################################################################
+# Just one contact defined by default - the Nagios admin (that's you)
+# This contact definition inherits a lot of default values from the 'generic-contact' 
+# template which is defined elsewhere.
+define contact{
+        contact_name                    nagiosadmin             ; Short name of user
+        use                             generic-contact         ; Inherit default values from generic-contact template (defined above)
+        alias                           Nagios Admin            ; Full name of user
+        email                           my@gmail.com ; <<***** CHANGE THIS TO YOUR EMAIL ADDRESS ******
+        service_notification_period     24x7
+        service_notification_options    w,u,c,r,f,s
+        service_notification_commands   notify-service-by-email
+        host_notification_period        24x7
+        host_notification_options       d,u,r,f,s
+        host_notification_commands      notify-host-by-email
+}
+define contact{
+        contact_name                    monoadmin
+        use                             generic-contact
+        alias                           Mono Admin
+        email                           myfirstlast01@seattlecentral.edu
+        service_notification_period     24x7
+        service_notification_options    w,u,c,r,f,s
+        service_notification_commands   notify-service-by-email
+        host_notification_period        24x7
+        host_notification_options       d,u,r,f,s
+        host_notification_commands      notify-host-by-email
+}
+define contact{
+        contact_name                    melowpriority
+        use                             generic-contact
+        alias                           Low Priority Alerts
+        email                           myname2012@gmail.com
+        service_notification_period     24x7
+        service_notification_options    w,u,c,r,f,s
+        service_notification_commands   notify-service-by-email
+        host_notification_period        24x7
+        host_notification_options       d,u,r,f,s
+        host_notification_commands      notify-host-by-email
+}
+define contact{
+        contact_name                    memediumpriority
+        use                             generic-contact
+        alias                           Me Medium priority
+        email                           someone@seattlecentral.edu
+        service_notification_period     24x7
+        service_notification_options    w,u,c,r,f,s
+        service_notification_commands   notify-service-by-email
+        host_notification_period        24x7
+        host_notification_options       d,u,r,f,s
+        host_notification_commands      notify-host-by-email
+}
+define contact{
+        contact_name                    mehighpriority
+        use                             generic-contact
+        alias                           Me High Priority
+        email                           1234567890@tmomail.net
+        service_notification_period     24x7
+        service_notification_options    w,u,c,r,f,s
+        service_notification_commands   notify-service-by-email
+        host_notification_period        24x7
+        host_notification_options       d,u,r,f,s
+        host_notification_commands      notify-host-by-email
+}
+###############################################################################
+###############################################################################
+#
+# CONTACT GROUPS
+#
+###############################################################################
+###############################################################################
+# We only have one contact in this simple configuration file, so there is
+# no need to create more than one contact group.
+define contactgroup{
+        contactgroup_name               admins
+        alias                           Nagios Administrators
+        members                         nagiosadmin
+       }
+define contactgroup{
+        contactgroup_name               low
+        alias                           Low Priority Alerts
+        members                         melowpriority
+        }
+define contactgroup{
+        contactgroup_name               medium
+        alias                           Medium Priority Alerts
+        members                         memediumpriority
+       }
+define contactgroup{ 
+        contactgroup_name               high
+        alias                           High Priority Alerts
+        members                         mehighpriority
+      }
+#
+                                                    
