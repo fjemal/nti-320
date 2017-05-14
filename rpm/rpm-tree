@@ -1,0 +1,44 @@
+fadliebra2012@rpm-b ~]$ ls
+check_plugin  check_plugin-0.1  check_plugin-0.1.tar.gz  hello-0.1  hello-0.1.tar.gz  rpm  rpmbuild
+[fadliebra2012@rpm-b rpmbuild]$ ls
+BUILD  BUILDROOT  RPMS  SOURCES  SPECS  SRPMS
+[fadliebra2012@rpm-b BUILD]$ ls
+check_plugin-0.1  hello-0.1
+[fadliebra2012@rpm-b BUILD]$ tree
+.
+├── check_plugin-0.1
+│   ├── check_plugin1
+│   ├── debugfiles.list
+│   ├── debuglinks.list
+│   ├── debugsources.list
+│   └── elfbins.list
+└── hello-0.1
+    ├── debugfiles.list
+    ├── debuglinks.list
+    ├── debugsources.list
+    ├── elfbins.list
+    └── hello1
+    fadliebra2012@rpm-b BUILDROOT]$ ls
+Tesst-1.0-1.el7.centos.x86_64
+check_plugin-0.1-1.el7.centos.x86_64.rpm
+[fadliebra2012@rpm-b RPMS]$ tree
+.
+└── x86_64
+    ├── check_plugin-0.1-1.el7.centos.x86_64.rpm
+    ├── check_plugin-debuginfo-0.1-1.el7.centos.x86_64.rpm
+    ├── hello-0.1-1.el7.centos.x86_64.rpm
+    └── hello-debuginfo-0.1-1.el7.centos.x86_64.rpm
+[fadliebra2012@rpm-b SPECS]$ ls
+%{buildroot}  check_plugin  check_plugin-0.1.tar.gz  check_plugin.spec  hello.spec
+[fadliebra2012@rpm-b SPECS]$ tree
+.
+├── %{buildroot}
+│   └── usr
+│       └── lib64
+│           └── nagios
+│               └── plugins
+├── check_plugin
+│   └── check_plugin-0.1.tar.gz
+├── check_plugin-0.1.tar.gz
+├── check_plugin.spec
+└── hello.spec
