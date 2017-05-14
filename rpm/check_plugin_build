@@ -1,24 +1,24 @@
-[fadliebra2012@rpm-b SPECS]$ rpmbuild -ba /home/fadliebra2012/rpmbuild/SPECS/check_plugin.spec
-Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.xPtmH5
+[fadliebra2012@rpm-b SPECS]$ rpmbuild -ba /home/fadliebra2012/rpmbuild/SPECS/check_plugin.spec 
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.RDfAFx
 + umask 022
 + cd /home/fadliebra2012/rpmbuild/BUILD
 + cd /home/fadliebra2012/rpmbuild/BUILD
 + rm -rf check_plugin-0.1
-+ /usr/bin/tar -xf -
 + /usr/bin/gzip -dc /home/fadliebra2012/rpmbuild/SOURCES/check_plugin-0.1.tar.gz
++ /usr/bin/tar -xf -
 + STATUS=0
 + '[' 0 -ne 0 ']'
 + cd check_plugin-0.1
 + /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
 + exit 0
-Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.swzDMi
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.77qegU
 + umask 022
 + cd /home/fadliebra2012/rpmbuild/BUILD
 + cd check_plugin-0.1
 + echo ' OK '
  OK 
 + exit 0
-Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.QAy0Sv
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.Zr8VRg
 + umask 022
 + cd /home/fadliebra2012/rpmbuild/BUILD
 + '[' /home/fadliebra2012/rpmbuild/BUILDROOT/check_plugin-0.1-1.el7.centos.x86_64 '!=' / ']'
@@ -28,10 +28,10 @@ Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.QAy0Sv
 + mkdir /home/fadliebra2012/rpmbuild/BUILDROOT/check_plugin-0.1-1.el7.centos.x86_64
 + cd check_plugin-0.1
 + rm -rf /home/fadliebra2012/rpmbuild/BUILDROOT/check_plugin-0.1-1.el7.centos.x86_64
-+ mkdir -p /home/fadliebra2012/rpmbuild/BUILDROOT/check_plugin-0.1-1.el7.centos.x86_64/root/bin
-+ cp check_plugin1 /home/fadliebra2012/rpmbuild/BUILDROOT/check_plugin-0.1-1.el7.centos.x86_64/root/bin
-+ /usr/lib/rpm/find-debuginfo.sh --strict-build-id -m --run-dwz --dwz-low-mem-die-limit 10000000 --dwz-max-die-limit 110000000 /home/fadliebra2012/rpmbuild/
-BUILD/check_plugin-0.1
++ mkdir -p /home/fadliebra2012/rpmbuild/BUILDROOT/check_plugin-0.1-1.el7.centos.x86_64/usr/lib64/nagios/plugins
++ install -m 0755 check_plugin1 /home/fadliebra2012/rpmbuild/BUILDROOT/check_plugin-0.1-1.el7.centos.x86_64/usr/lib64/nagios/plugins/check_plugin1
++ /usr/lib/rpm/find-debuginfo.sh --strict-build-id -m --run-dwz --dwz-low-mem-die-limit 10000000 --dwz-max-die-limit 110000000 /home/fadliebra2012/rpmbuild/BUILD/ch
+eck_plugin-0.1
 /usr/lib/rpm/sepdebugcrcfix: Updated 0 CRC32s, 0 CRC32s did match.
 + /usr/lib/rpm/check-buildroot
 + /usr/lib/rpm/redhat/brp-compress
@@ -41,7 +41,10 @@ BUILD/check_plugin-0.1
 + /usr/lib/rpm/redhat/brp-java-repack-jars
 Processing files: check_plugin-0.1-1.el7.centos.x86_64
 Provides: check_plugin = 0.1-1.el7.centos check_plugin(x86-64) = 0.1-1.el7.centos
+Requires(interp): /bin/sh
 Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+Requires(post): /bin/sh
+Requires: /bin/bash
 Processing files: check_plugin-debuginfo-0.1-1.el7.centos.x86_64
 Provides: check_plugin-debuginfo = 0.1-1.el7.centos check_plugin-debuginfo(x86-64) = 0.1-1.el7.centos
 Requires(rpmlib): rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1 rpmlib(CompressedFileNames) <= 3.0.4-1
@@ -49,10 +52,9 @@ Checking for unpackaged file(s): /usr/lib/rpm/check-files /home/fadliebra2012/rp
 Wrote: /home/fadliebra2012/rpmbuild/SRPMS/check_plugin-0.1-1.el7.centos.src.rpm
 Wrote: /home/fadliebra2012/rpmbuild/RPMS/x86_64/check_plugin-0.1-1.el7.centos.x86_64.rpm
 Wrote: /home/fadliebra2012/rpmbuild/RPMS/x86_64/check_plugin-debuginfo-0.1-1.el7.centos.x86_64.rpm
-Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.vKJehn
+Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.gOpjmK
 + umask 022
 + cd /home/fadliebra2012/rpmbuild/BUILD
 + cd check_plugin-0.1
 + rm -rf /home/fadliebra2012/rpmbuild/BUILDROOT/check_plugin-0.1-1.el7.centos.x86_64
 + exit 0
-[fadliebra2012@rpm-b SPECS]$ 
