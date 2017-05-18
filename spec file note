@@ -1,0 +1,106 @@
+After install the rpm the rpmbuild package, you can read about features of SPEC files in the dir of 
+/usr/share/doc/rpm_build*/spec file.
+
+Name:   check_plugin
+Version:        0.1
+Release:        1%{?dist}
+Summary:        GOOD
+Group:          NTI-320
+License:         GNUv2
+URL:            https://github.com/fjemal/nti-320
+#Source0:       
+source:         check_plugin-0.1.tar.gz
+BuildRequires:  gcc
+Requires:       bash
+
+%description
+THIS IS AWESOME
+#It used to give a comprehensive description of the package.
+
+%prep
+%setup -q
+%build
+echo " OK "
+%install
+It install the newly built software.
+#make install DESTDIR=%{buildroot}
+#rm -rf $RPM_BUILD_ROOT
+#mkdir -p $RPM_BUILD_ROOT/root/bin
+#cp check_plugin1 $RPM_BUILD_ROOT/root/bin
+rm -rf %{buildroot}
+#mkdir -p %{buildroot}/%{_bindir}
+mkdir -p %{buildroot}/usr/lib64/nagios/plugins
+install -m 0755 check_plugin1 %{buildroot}/usr/lib64/nagios/plugins/check_plugin1
+#install -m 0755 check_plugin1 %{buildroot}/%{_bindir}/check_plugin1
+%clean
+#rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
+
+%files
+%defattr(-,root,root,-)
+#%attr(0777,root,root)/root/bin/check_plugin1
+#/usr/bin/check_plugin1
+/usr/lib64/nagios/plugins/check_plugin1
+
+%post
+#The %post script executes after the package has been installed
+
+sudo chown nagios:nagios /usr/lib64/nagios/plugins/check_plugin1
+sudo chmod +x /usr/lib64/nagios/plugins/check_plugin1
+sudo sed -i "215i command[check_plugin1]=\/usr\/lib64\/nagios\/plugins\/check_plugin1 -w 66 -c 902" /etc/nagios/nrpe.cfg
+
+What is each section for?
+#The first part of spec file The Preamble (Header), which consists of, name, version, release, summary, group,
+license, source this will ensure
+if you install multiple sources RPMs for different versions of the same packaging that atleast
+the spec files remain intact.
+name: the name of the spec file
+
+version: version: is the upstream version number on the package. 
+         It set the version of the software being packaged.
+Release: A number that is used to represent the number of times the software, at the present version, has been packaged.    
+         source: source filenames match the expansion of "%{name}-%{version}.tar.gz"
+Summary: It descripes the package
+Group: used to hold a string that defines how the packaged software should be grouped with other packages.
+License: The license line is used to hold the packaged software's license information
+URL: the URL line points to documentation for the software being packaged.
+source:  To document where the packaged software's sources can be found.
+         To give the name of the source file as it exists in the SOURCES subdirectory.
+
+%description: It used to give a comprehensive description of the package.
+
+
+The %prep section is where the source is prepared, usually in $RPM_BUILD_DIR
+The %build section is where the actual compiling takes place
+The %install section is where the files get "installed" into your build root.
+
+%files
+The %files section is where you list all the files in the package.
+%defattr(-,bin,bin)
+The %post section is Optional for initial install
+%clean the clean section instructs the RPM to clean up any files that are not part of the application’s normal build 
+area. Lets say for an example, If the application creates a temporary directory structure in /tmp/ as part of its 
+build, it will not be removed. By adding a sh script in %clean section, the directory can be removed after the build 
+process is completed.
+
+What kind of information would be found in it?
+A plain text file containing information about a package and instructions used by RPM for actually compiling and installing software.
+
+What working directory is used in each section?
+the working dir for %files section /usr/local/bin/-
+
+What is a chroot environment and why is it important?
+It is a special directory which prevents applications, if run from inside that directory from accessing
+files outside the directory.
+It isolating insecure and unstable applications 
+Testing new packages before installing them on the production system 
+Building new packages, allowing careful control over the dependency packages which are installed 
+
+What would you change if you wanted to make an rpm with just scripts (no compiled code)?
+noarch
+What tag/macro would you use to run a script when the rpm is installed?
+A %triggerin, %post
+
+What tag/macro would you use to run a script when the rpm is uninstalled?
+%triggerun, %preun
+
