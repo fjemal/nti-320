@@ -1,0 +1,38 @@
+
+yum install createrepo
+
+mkdir -p /repos/centos/7/extras/x86_64/Packages
+
+createrepo /repos/centos/7/extras/x86_64/Packages
+#secure copy packages to your home directory
+scp rpmbuild/RPMS/x86_64/hello-0.1-1.el7.centos.x86_64.rpm yum-repo2:/home/fadliebra2012
+#If get error or permisson deny download repos file on your
+rpm server and upload it to your client or yum server.
+
+#update your 'yum' server
+createrepo --update /repos/centos/7/extras/x86_64/Packages
+ #install apache server
+yum install -y httpd
+#enable and start apache server
+systemctl enable && start httpd
+
+#check if apache server works (welcome webpage)
+#edit this file
+vim /etc/httpd/conf.d/welcome.conf
+comment out all lines and save 
+# restart your apache server
+systemctl enable && restart apache
+
+#Create a symbolic link
+ n -s /var/www/html/CentOS /repos/centos/7/extras/x86_64/Packages
+
+#Create a configuration file 
+cd /etc/yum.repos.d
+vim local.repo
+[mylocalrepo]
+name=My CentOS Repo
+baseurl=http://repos/centos/7/extras/x86_64/Packages
+gpgcheck=0
+enabled=1
+
+
