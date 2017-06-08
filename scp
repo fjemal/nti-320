@@ -1,0 +1,10 @@
+#!/bin/bash
+
+/home/fadliebra2012/generate_config.sh $1 $2
+
+gcloud compute copy-files \
+    gcloud-a.cfg 10.142.0.3 fadliebra2012@nagios-sv \
+      /usr/local/nagios/etc/servers \
+         --zone us-central1-a 
+         
+         gcloud compute ssh fadliebra2012@nagios-sv "sudo /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg"
