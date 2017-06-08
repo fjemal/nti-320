@@ -4,7 +4,7 @@
 #ip="104.154.86.19"                                                    # Please replace with your own IP
 #gcloud compute instances create INSTANCE 
 
-ip=$(gcloud compute instances list | grep ldap-server | awk '{print $4}') # will dynamically add ip address
+ip=$(gcloud compute instances list | grep ldap-server | awk '{print $2}') # will dynamically add ip address
 
 echo "[fjemal nti-320 repo]
 
