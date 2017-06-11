@@ -1,0 +1,6 @@
+#!/bin/bash
+/home/fadliebra2012/generate_config.sh $1 $2
+gcloud compute copy-files \
+    $1.cfg fadliebra2012@nagios-sv \
+      /usr/local/nagios/etc/servers \
+         --zone us-central1-a
