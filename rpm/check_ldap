@@ -1,0 +1,15 @@
+#!/bin/bash
+ldapstatus="0"                                  # Change the status to test different alert states
+if [ $ldapstatus == "0" ]; then
+   echo "LDAPSTATUS:IS OK and RUNNING FINE"
+    exit 0;
+ elif [ $ldapstatus == "2" ]; then
+    echo "LDAPSTATUS:CRITICAL"
+    exit 2;
+  elif [ $ldapstatus == "1" ] ; then
+    echo "LDAPSTATUS:WARNING"
+   3 exit 1;
+else
+   echo "LDAPSTATUS:UNKNOWN"
+   exit 3;
+fi
