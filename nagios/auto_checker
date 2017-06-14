@@ -1,0 +1,36 @@
+#!/bin/bash
+#check the list of IPs of the instances in the network 
+list=$(gcloud compute instances list | tail -n+2 | awk '{print $1}')
+#a loop that take each IP to be verified
+for ((i=1; i<=$(echo "$list" | wc -w); i++))
+do
+        #assign the IP to the variable
+        Ip=$(echo "$list" | sed -n "$i p")
+        #verify the IP from the file IPs.txt created in Network directory using mkdir /Network
+        if  grep -R $Ip /Network/Ips.txt
+        then
+                #if the IP is already in the Nagios
+                echo "Ip already Included"
+        else
+                #if the Ip is not create the configuration file for Nagios
+                echo "Creating configuration"
+                #obtain the name of the host
+                host=$(gcloud compute instances list | grep $Ip | cut -d' ' -f1)
+                #execute the genrator file
+                /home/fadliebra2012/generate_config.sh $host $Ip
+                #copy the nagios_host file in the instance
+                gcloud compute copy-files /home/fadliebra2012/nagios-client.cfg fadliebra2012@nagios-sv:/usr/local/nagios/etc/servers
+                #gcloud compute copy-files /home/fadliebra2012/plugins.repo fadliebra2012@$nagios-sv:/usr/local/nagios/etc/servers           
+                #execute the installation of the repo and nagios
+                #gcloud compute ssh fadliebra2012@nagios-sv --command "sudo cp /home/yojetoga/plugins.repo /etc/yum.repos.d/plugins.repo"
+                gcloud compute ssh fadliebra2012@$nagios --command "sudo yum repolist"
+                gcloud compute ssh fadliebra2012@$nagios --command "sudo bash Nagios_hosts"
+                gcloud compute ssh fadliebra2012@$nagios --command "sudo yum -y install plugins"
+                gcloud compute ssh fadliebra2012@$nagios --command "sudo systemctl restart nrpe"
+                systemctl restart nrpe nagios httpd
+                
+        
+                #save the IP in the Nagios-server
+                echo $Ip >> /Network/Ips.txt
+        fi
+done
