@@ -1,0 +1,207 @@
+#!/bin/bash
+#install git to clone your git repo
+yum -y install git
+git clone https://github.com/fjemal/nti-320.git /tmp/NTI-320
+#Disable SELinux
+sed -i "s/SELINUX=enforcing/SELINUX=permissive/" /etc/sysconfig/selinux
+setenforce 0
+#Modify /etc/selinux/config and change enforcing to disabled.
+#Install Prerequisites
+yum install httpd php php-cli gcc glibc glibc-common gd gd-devel net-snmp openssl-devel wget unzip -y
+#https://www.unixmen.com/install-configure-nagios-4-centos-7/
+#http://www.itzgeek.com/how-tos/linux/centos-how-tos/monitor-centos-7-rhel-7-using-nagios-4-0-7.html
+#create a user and group for Nagios to use.
+useradd nagios
+
+groupadd nagcmd
+
+usermod -a -G nagcmd nagios
+
+usermod -a -G nagcmd apache 
+
+#Download and Install Nagios and nagios-plugins
+cd /tmp
+wget https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.3.1.tar.gz
+tar zxf nagios-4.3.1.tar.gz
+
+wget http://www.nagios-plugins.org/download/nagios-plugins-2.2.0.tar.gz
+
+tar zxf nagios-plugins-2.2.0.tar.gz
+
+cd nagios-4.3.1
+
+#Now that the files are extracted, let's start compiling Nagios!
+./configure --with-command-group=nagcmd
+make all
+
+make install
+
+make install-init
+
+make install-config
+
+make install-commandmode
+
+make install-webconf
+
+#Creating a password for nagiosadmin
+htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
+
+#Install Nagios Plugins
+cd /tmp/nagios-plugins-2.2.0
+
+./configure --with-nagios-user=nagios --with-nagios-group=nagios --with-openssl
+
+make all 
+
+make install
+mkdir /usr/local/nagios/etc/servers
+
+cd /tmp
+wget --no-check-certificate -O nrpe.tar.gz https://github.com/NagiosEnterprises/nrpe/archive/3.0.1.tar.gz
+tar xzf nrpe.tar.gz
+cd /tmp/nrpe-3.0.1/
+./configure --enable-command-args
+make all
+
+make install-groups-users
+make install
+
+make install-config
+
+cd ~
+wget https://downloads.sourceforge.net/project/nagios/nrpe-2.x/nrpe-2.15/nrpe-2.15.tar.gz
+
+tar xvf nrpe-2.15.tar.gz
+
+cd nrpe-2.15
+./configure --enable-command-args --with-nagios-user=nagios --with-nagios-group=nagios --with-ssl=/usr/bin/openssl --with-ssl-lib=/usr/lib/x86_64-linux-gnu
+
+make all
+
+sudo make install
+
+sudo make install-xinetd
+
+sudo make install-daemon-config
+
+sudo service xinetd restart
+
+#Update Services File
+echo >> /etc/services
+echo '# Nagios services' >> /etc/services
+echo 'nrpe    5666/tcp' >> /etc/services
+
+make install-init
+systemctl enable nrpe.service
+
+firewall-cmd --zone=public --add-port=5666/tcp
+firewall-cmd --zone=public --add-port=5666/tcp --permanent
+
+#/usr/local/nagios/etc/nrpe.cfg
+#allowed_hosts=127.0.0.1,10.128.0.0
+
+sed -i '/^allowed_hosts=/s/$/,10.128.0.0\/24/' /usr/local/nagios/etc/nrpe.cfg
+sed -i 's/^dont_blame_nrpe=.*/dont_blame_nrpe=1/g' /usr/local/nagios/etc/nrpe.cfg
+
+systemctl start nrpe.service
+
+#Test NRPE
+/usr/local/nagios/libexec/check_nrpe -H 127.0.0.1
+systemctl start nrpe.service
+systemctl stop nrpe.service
+systemctl restart nrpe.service
+systemctl status nrpe.service
+
+
+
+#open server directory for monitoring configurations
+
+#Start Nagios
+service httpd start 
+service nagios start
+
+#sudo vi /usr/local/nagios/etc/servers/nfs.cfg
+mkdir /usr/local/nagios/etc/servers
+echo "define host {
+        use                             linux-server
+        host_name                       nfs
+        alias                           nfs
+        address                        10.128.0.11
+        max_check_attempts              5
+        check_period                    24x7
+        notification_interval           30
+        notification_period             24x7
+}
+
+#Ping:
+
+define service {
+        use                             generic-service
+        host_name                       nfs
+        service_description             PING
+        check_command                   check_ping!100.0,20%!500.0,60%
+}
+
+define service {
+        use                             generic-service
+        host_name                       nfs
+        service_description             HTTP
+        check_command                   check_http
+        notifications_enabled           0
+}
+
+#SSH (notifications_enabled set to 0 disables notifications for a service):
+
+define service {
+        use                             generic-service
+        host_name                       nfs
+        service_description             SSH
+        check_command                   check_ssh
+        notifications_enabled           0
+        define service{
+        use                     generic-service      
+        host_name               nfs
+        service_description     Current Users
+        check_command		check_nrpe!check_users!20!50
+        }
+
+#Proccess service check
+define service{
+        use                     generic-service        
+        host_name               nfs
+        service_description     Total Processes
+        check_command	        check_nrpe!check_procs!250!400!RSZDT
+        }
+
+#Load Balance service check
+define service{
+        use                      generic-service        
+        host_name                nfs
+        service_description      Current Load
+        check_command	         check_nrpe!check_load!5.0,4.0,3.0!10.0,6.0,4.0
+        }
+#Memory RAM service check
+define service{
+        use                      generic-service
+        host_name                nfs
+        service_description      Check RAM
+        check_command            check_nrpe!check_mem
+}
+
+"> /usr/local/nagios/etc/servers/nfs.cfg
+ echo '# check_nrpe command definition
+define command{
+        command_name check_nrpe
+        command_line $USER1$/check_nrpe -H $HOSTADDRESS$ -c $ARG1$
+}
+"> /usr/local/nagios/objects/commands.cfg
+sed -i "s,command[check_hda1]=/usr/lib64/nagios/plugins/check_disk -w 20% -c 10% -p /dev/hda1,command[check_disk]=/usr/lib64/nagios/plugins/check_disk -w 20% -c 10% -p /dev/sda1,g" /etc/nagios/nrpe.cfg
+sed -i "217i command[check_mem]=/usr/lib64/nagios/plugins/check_mem  -f -w 20 -c 10" /etc/nagios/nrpe.cfg
+echo "command[check_mem]=/usr/lib64/nagios/plugins/check_mem.sh -w 80 -c 90" >> /etc/nagios/nrpe.cfg
+
+
+
+
+
+
