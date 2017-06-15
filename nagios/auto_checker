@@ -1,6 +1,6 @@
 #!/bin/bash
 #check the list of IPs of the instances in the network 
-list=$(gcloud compute instances list | tail -n+2 | awk '{print $1}')
+list=$(gcloud compute instances list | grep -v NAME | awk '{print $1}')
 #a loop that take each IP to be verified
 for ((i=1; i<=$(echo "$list" | wc -w); i++))
 do
