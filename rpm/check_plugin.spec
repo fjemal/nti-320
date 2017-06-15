@@ -61,19 +61,19 @@ sudo sed -i "215i command[check_plugin1]=\/usr\/lib64\/nagios\/plugins\/check_pl
 sudo sed -i "216i command[check_disk]=\/usr\/lib64\/nagios\/plugins\/check_disk -w 20% -c 10% -p \/dev\/sda1" /etc/nagios/nrpe.cfg
 sudo sed -i "217i command[check_procs]=\/usr\/lib64\/nagios\/plugins\/check_procs -w 150 -c 200" /etc/nagios/nrpe.cfg
 sudo sed -i "218i command[check_mem]=/usr/lib64/nagios/plugins/check_mem  -f -w 20 -c 10" /etc/nagios/nrpe.cfg
-sudo sed -i "219i command[check_diskspace]=/usr/lib64/nagios/plugins/check_diskspace" /etc/nagios/nrpe.cfg
+sudo sed -i "219i command[check_usedspace]=/usr/lib64/nagios/plugins/check_usedspace" /etc/nagios/nrpe.cfg
 sudo sed -i "220i command[check_ssl]=/usr/lib64/nagios/plugins/check_ssl" /etc/nagios/nrpe.cfg
 sudo sed -i "221i command[check_ldap]=/usr/lib64/nagios/plugins/check_ldap" /etc/nagios/nrpe.cfg
 
 #chenage the owner to nagios
 sudo chown nagios:nagios /usr/lib64/nagios/plugins/check_plugin1
 sudo chown nagios:nagios /usr/lib64/nagios/plugins/check_ldap
-sudo chown nagios:nagios /usr/lib64/nagios/plugins/check_diskspace
+sudo chown nagios:nagios /usr/lib64/nagios/plugins/check_usedspace
 sudo chown nagios:nagios /usr/lib64/nagios/plugins/check_ssl
 
 sudo chmod +x /usr/lib64/nagios/plugins/check_plugin1
 sudo chmod +x /usr/lib64/nagios/plugins/check_ldap
-sudo chmod +x /usr/lib64/nagios/plugins/check_diskspace
+sudo chmod +x /usr/lib64/nagios/plugins/check_usedspace
 sudo chmod +x /usr/lib64/nagios/plugins/check_ssl
 
 
