@@ -51,7 +51,7 @@ sudo yum install wget
 sudo yum -y install httpd nrpe nagios-plugins-all 
 
 #add check_mem plugin from github
-sudo cd /usr/lib64/nagios/plugins/
+cd /usr/lib64/nagios/plugins/
 sudo wget https://raw.githubusercontent.com/justintime/nagios-plugins/master/check_mem/check_mem.pl
 sudo mv check_mem.pl check_mem
 sudo chmod +x check_mem
