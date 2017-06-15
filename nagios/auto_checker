@@ -24,8 +24,12 @@ do
                 #execute the installation of the repo and nagios
                 #gcloud compute ssh fadliebra2012@nagios-sv --command "sudo cp /home/yojetoga/plugins.repo /etc/yum.repos.d/plugins.repo"
                 gcloud compute ssh fadliebra2012@$nagios --command "sudo yum repolist"
-                gcloud compute ssh fadliebra2012@$nagios --command "sudo bash Nagios_hosts"
+                gcloud compute ssh fadliebra2012@$nagios --command "sudo Nagios_hosts"
                 gcloud compute ssh fadliebra2012@$nagios --command "sudo yum -y install plugins"
+                gcloud compute ssh fadliebra2012@$nagios --command "sudo yum install nagios-plugins-all"
+                gcloud compute ssh fadliebra2012@$nagios --command "sudo yum -y install nagios-plugins-nrpe"
+                gcloud compute ssh fadliebra2012@$nagios --command "sudo yum -y install nti-320-plugins"
+                gcloud compute ssh fadliebra2012@$nagios --command "sudo systemctl restart nagios"
                 gcloud compute ssh fadliebra2012@$nagios --command "sudo systemctl restart nrpe"
                 systemctl restart nrpe nagios httpd
                 
