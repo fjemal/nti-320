@@ -61,16 +61,15 @@ cd /tmp
 sleep 5
 curl -L -O https://github.com/NagiosEnterprises/nrpe/releases/download/nrpe-3.2.1/nrpe-3.2.1.tar.gz
 sleep 5
-
+tar -xvf nrpe-3.2.1.tar.gz
 cd /tmp/nrpe-3.2.1/
 
-./configure --enable-command-args
+./configure --enable-command-args --with-nagios-user=nagios --with-nagios-group=nagios --with-ssl=/usr/bin/openssl --with-ssl-lib=/usr/lib/x86_64-linux-gnu
 
 make all
-
-make install-groups-users
 make install
-
+make install-xinetd
+make install-daemon-config
 make install-config
 
 #Update Services File
@@ -98,8 +97,6 @@ systemctl start nrpe.service
 systemctl stop nrpe.service
 systemctl restart nrpe.service
 systemctl status nrpe.service
-
-
 
 #open server directory for monitoring configurations
 
