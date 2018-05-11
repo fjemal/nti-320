@@ -82,7 +82,7 @@ firewall-cmd --zone=public --add-port=5666/tcp --permanent
 #/usr/local/nagios/etc/nrpe.cfg
 #allowed_hosts=127.0.0.1,10.128.0.0
 
-sed -i '/^allowed_hosts=/s/$/,10.128.0.0\/24/' /usr/local/nagios/etc/nrpe.cfg
+sed -i '/^allowed_hosts=/s/$/,10.138.0.0\/24/' /usr/local/nagios/etc/nrpe.cfg
 sed -i 's/^dont_blame_nrpe=.*/dont_blame_nrpe=1/g' /usr/local/nagios/etc/nrpe.cfg
 
 systemctl start nrpe.service
