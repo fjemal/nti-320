@@ -58,7 +58,7 @@ make install
 mkdir /usr/local/nagios/etc/servers
 
 cd /tmp
-curl -L -O https://github.com/NagiosEnterprises/nrpe/releases/download/nrpe-3.2.1/nrpe-3.2.1.tar.gztar xzf nrpe.tar.gz
+curl -L -O https://github.com/NagiosEnterprises/nrpe/releases/download/nrpe-3.2.1/nrpe-3.2.1.tar.gz
 cd /tmp/nrpe-3.2.1/
 ./configure --enable-command-args
 make all
