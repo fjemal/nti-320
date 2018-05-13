@@ -4,14 +4,14 @@
         gcloud auth login Fadil.Jemal@seattlecolleges.edu --no-launch-browser
         echo "Enabling billing..."
         #gcloud alpha billing accounts projects link   nti-320 --account-id=00189B-E1F480-31B987
-        gcloud alpha billing accounts projects link   devops  --account ID: 013283-D06D10-B9064D
+        gcloud alpha billing accounts projects link    gcloud  --account-id=013283-D06D10-B9064D
 
        # echo "Setting admin account-id..."
         gcloud config set account Fadil.Jemal@seattlecolleges.edu
         echo "Setting the project for Configuration..."
         #gcloud compute instances create projects/gcloud-170421
-        gcloud compute instances create projects/devops-203203	
-        gcloud config set project   devops
+        gcloud compute instances create projects/gcloud-204001	
+        gcloud config set project gcloud
         echo "Setting zone/region for Configuration..."
         gcloud config set compute/zone us-central1-a
         gcloud config set compute/region us-central1
