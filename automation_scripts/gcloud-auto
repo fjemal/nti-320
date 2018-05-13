@@ -1,14 +1,17 @@
 #!/bin/bash
         echo "This is Fadil's Gcloud Automation"
         echo "Authorizing fjemal01 for this project..."
-        gcloud auth login fjemal01@seattlecentral.edu --no-launch-browser
-       # echo "Enabling billing..."
+        gcloud auth login Fadil.Jemal@seattlecolleges.edu --no-launch-browser
+        echo "Enabling billing..."
         #gcloud alpha billing accounts projects link   nti-320 --account-id=00189B-E1F480-31B987
+        gcloud alpha billing accounts projects link   devops  --account ID: 013283-D06D10-B9064D
+
        # echo "Setting admin account-id..."
-        gcloud config set account fjemal01@seattlecentral.edu
+        gcloud config set account Fadil.Jemal@seattlecolleges.edu
         echo "Setting the project for Configuration..."
-       gcloud compute instances create projects/gcloud-170421
-        gcloud config set project    nti-320
+        #gcloud compute instances create projects/gcloud-170421
+        gcloud compute instances create projects/devops-203203	
+        gcloud config set project   devops
         echo "Setting zone/region for Configuration..."
         gcloud config set compute/zone us-central1-a
         gcloud config set compute/region us-central1
