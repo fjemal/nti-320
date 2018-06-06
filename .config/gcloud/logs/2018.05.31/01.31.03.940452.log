@@ -1,0 +1,20 @@
+2018-05-31 01:31:03,941 DEBUG    root            Loaded Command Group: [u'gcloud', u'auth']
+2018-05-31 01:31:03,944 DEBUG    root            Loaded Command Group: [u'gcloud', u'auth', u'login']
+2018-05-31 01:31:03,947 DEBUG    root            Running [gcloud.auth.login] with arguments: []
+2018-05-31 01:31:06,579 INFO     ___FILE_ONLY___ Go to the following link in your browser:
+
+    https://accounts.google.com/o/oauth2/auth?redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&prompt=select_account&response_type=code&client_id=32555940559.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fappengine.admin+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcompute+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Faccounts.reauth&access_type=offline
+
+
+
+2018-05-31 01:31:38,722 INFO     oauth2client.client Successfully retrieved access token
+2018-05-31 01:31:38,745 WARNING  root            `gcloud auth login` no longer writes application default credentials.
+If you need to use ADC, see:
+  gcloud auth application-default --help
+2018-05-31 01:31:38,750 INFO     ___FILE_ONLY___ 
+You are now logged in as [Fadil.Jemal@seattlecolleges.edu].
+Your current project is [devops-203203].  You can change this setting by running:
+  $ gcloud config set project PROJECT_ID
+
+2018-05-31 01:31:38,752 INFO     root            Display format: "none"
+2018-05-31 01:31:38,755 DEBUG    root            SDK update checks are disabled.

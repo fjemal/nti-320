@@ -1,0 +1,188 @@
+2018-06-02 21:47:49,959 DEBUG    root            Loaded Command Group: [u'gcloud', u'compute', u'instances']
+2018-06-02 21:47:49,967 DEBUG    root            Loaded Command Group: [u'gcloud', u'compute', u'instances', u'list']
+2018-06-02 21:47:49,970 DEBUG    root            Running [gcloud.compute.instances.list] with arguments: []
+2018-06-02 21:47:50,267 INFO     root            Display format: "    table(
+      name,
+      zone.basename(),
+      machineType.machine_type().basename(),
+      scheduling.preemptible.yesno(yes=true, no=''),
+      networkInterfaces[].networkIP.notnull().list():label=INTERNAL_IP,
+      networkInterfaces[].accessConfigs[0].natIP.notnull().list()      :label=EXTERNAL_IP,
+      status
+    )"
+2018-06-02 21:47:50,596 INFO     root            cache collection=compute.instances api_version=v1 params=[u'project', u'zone', u'instance']
+2018-06-02 21:47:50,598 INFO     ___FILE_ONLY___ NAME
+2018-06-02 21:47:50,599 INFO     ___FILE_ONLY___              
+2018-06-02 21:47:50,599 INFO     ___FILE_ONLY___ ZONE
+2018-06-02 21:47:50,599 INFO     ___FILE_ONLY___         
+2018-06-02 21:47:50,599 INFO     ___FILE_ONLY___ MACHINE_TYPE
+2018-06-02 21:47:50,599 INFO     ___FILE_ONLY___   
+2018-06-02 21:47:50,600 INFO     ___FILE_ONLY___ PREEMPTIBLE
+2018-06-02 21:47:50,600 INFO     ___FILE_ONLY___   
+2018-06-02 21:47:50,600 INFO     ___FILE_ONLY___ INTERNAL_IP
+2018-06-02 21:47:50,600 INFO     ___FILE_ONLY___   
+2018-06-02 21:47:50,600 INFO     ___FILE_ONLY___ EXTERNAL_IP
+2018-06-02 21:47:50,600 INFO     ___FILE_ONLY___      
+2018-06-02 21:47:50,600 INFO     ___FILE_ONLY___ STATUS
+2018-06-02 21:47:50,600 INFO     ___FILE_ONLY___ 
+
+2018-06-02 21:47:50,601 INFO     ___FILE_ONLY___ cacti-server
+2018-06-02 21:47:50,601 INFO     ___FILE_ONLY___      
+2018-06-02 21:47:50,601 INFO     ___FILE_ONLY___ us-west1-a
+2018-06-02 21:47:50,601 INFO     ___FILE_ONLY___   
+2018-06-02 21:47:50,601 INFO     ___FILE_ONLY___ f1-micro
+2018-06-02 21:47:50,601 INFO     ___FILE_ONLY___                    
+2018-06-02 21:47:50,601 INFO     ___FILE_ONLY___ 10.138.0.14
+2018-06-02 21:47:50,602 INFO     ___FILE_ONLY___   
+2018-06-02 21:47:50,602 INFO     ___FILE_ONLY___ 35.230.93.117
+2018-06-02 21:47:50,602 INFO     ___FILE_ONLY___    
+2018-06-02 21:47:50,602 INFO     ___FILE_ONLY___ RUNNING
+2018-06-02 21:47:50,602 INFO     ___FILE_ONLY___ 
+
+2018-06-02 21:47:50,602 INFO     ___FILE_ONLY___ django-a
+2018-06-02 21:47:50,602 INFO     ___FILE_ONLY___          
+2018-06-02 21:47:50,602 INFO     ___FILE_ONLY___ us-west1-a
+2018-06-02 21:47:50,602 INFO     ___FILE_ONLY___   
+2018-06-02 21:47:50,603 INFO     ___FILE_ONLY___ f1-micro
+2018-06-02 21:47:50,603 INFO     ___FILE_ONLY___                    
+2018-06-02 21:47:50,603 INFO     ___FILE_ONLY___ 10.138.0.11
+2018-06-02 21:47:50,603 INFO     ___FILE_ONLY___   
+2018-06-02 21:47:50,603 INFO     ___FILE_ONLY___ 35.233.210.90
+2018-06-02 21:47:50,603 INFO     ___FILE_ONLY___    
+2018-06-02 21:47:50,603 INFO     ___FILE_ONLY___ RUNNING
+2018-06-02 21:47:50,603 INFO     ___FILE_ONLY___ 
+
+2018-06-02 21:47:50,604 INFO     ___FILE_ONLY___ gcloud1
+2018-06-02 21:47:50,604 INFO     ___FILE_ONLY___           
+2018-06-02 21:47:50,604 INFO     ___FILE_ONLY___ us-west1-a
+2018-06-02 21:47:50,604 INFO     ___FILE_ONLY___   
+2018-06-02 21:47:50,604 INFO     ___FILE_ONLY___ f1-micro
+2018-06-02 21:47:50,604 INFO     ___FILE_ONLY___                    
+2018-06-02 21:47:50,604 INFO     ___FILE_ONLY___ 10.138.0.2
+2018-06-02 21:47:50,605 INFO     ___FILE_ONLY___                    
+2018-06-02 21:47:50,605 INFO     ___FILE_ONLY___ TERMINATED
+2018-06-02 21:47:50,605 INFO     ___FILE_ONLY___ 
+
+2018-06-02 21:47:50,605 INFO     ___FILE_ONLY___ ldap
+2018-06-02 21:47:50,605 INFO     ___FILE_ONLY___              
+2018-06-02 21:47:50,605 INFO     ___FILE_ONLY___ us-west1-a
+2018-06-02 21:47:50,605 INFO     ___FILE_ONLY___   
+2018-06-02 21:47:50,605 INFO     ___FILE_ONLY___ f1-micro
+2018-06-02 21:47:50,606 INFO     ___FILE_ONLY___                    
+2018-06-02 21:47:50,606 INFO     ___FILE_ONLY___ 10.138.0.5
+2018-06-02 21:47:50,606 INFO     ___FILE_ONLY___                    
+2018-06-02 21:47:50,606 INFO     ___FILE_ONLY___ TERMINATED
+2018-06-02 21:47:50,606 INFO     ___FILE_ONLY___ 
+
+2018-06-02 21:47:50,606 INFO     ___FILE_ONLY___ ldap-server
+2018-06-02 21:47:50,606 INFO     ___FILE_ONLY___       
+2018-06-02 21:47:50,606 INFO     ___FILE_ONLY___ us-west1-a
+2018-06-02 21:47:50,607 INFO     ___FILE_ONLY___   
+2018-06-02 21:47:50,607 INFO     ___FILE_ONLY___ f1-micro
+2018-06-02 21:47:50,607 INFO     ___FILE_ONLY___                    
+2018-06-02 21:47:50,607 INFO     ___FILE_ONLY___ 10.138.0.7
+2018-06-02 21:47:50,607 INFO     ___FILE_ONLY___    
+2018-06-02 21:47:50,607 INFO     ___FILE_ONLY___ 35.197.66.103
+2018-06-02 21:47:50,607 INFO     ___FILE_ONLY___    
+2018-06-02 21:47:50,607 INFO     ___FILE_ONLY___ RUNNING
+2018-06-02 21:47:50,608 INFO     ___FILE_ONLY___ 
+
+2018-06-02 21:47:50,608 INFO     ___FILE_ONLY___ nagios-server
+2018-06-02 21:47:50,608 INFO     ___FILE_ONLY___     
+2018-06-02 21:47:50,608 INFO     ___FILE_ONLY___ us-west1-a
+2018-06-02 21:47:50,608 INFO     ___FILE_ONLY___   
+2018-06-02 21:47:50,608 INFO     ___FILE_ONLY___ f1-micro
+2018-06-02 21:47:50,609 INFO     ___FILE_ONLY___                    
+2018-06-02 21:47:50,609 INFO     ___FILE_ONLY___ 10.138.0.12
+2018-06-02 21:47:50,609 INFO     ___FILE_ONLY___   
+2018-06-02 21:47:50,609 INFO     ___FILE_ONLY___ 35.230.33.182
+2018-06-02 21:47:50,609 INFO     ___FILE_ONLY___    
+2018-06-02 21:47:50,609 INFO     ___FILE_ONLY___ RUNNING
+2018-06-02 21:47:50,609 INFO     ___FILE_ONLY___ 
+
+2018-06-02 21:47:50,610 INFO     ___FILE_ONLY___ nagios1
+2018-06-02 21:47:50,610 INFO     ___FILE_ONLY___           
+2018-06-02 21:47:50,610 INFO     ___FILE_ONLY___ us-west1-a
+2018-06-02 21:47:50,610 INFO     ___FILE_ONLY___   
+2018-06-02 21:47:50,610 INFO     ___FILE_ONLY___ f1-micro
+2018-06-02 21:47:50,610 INFO     ___FILE_ONLY___                    
+2018-06-02 21:47:50,610 INFO     ___FILE_ONLY___ 10.138.0.6
+2018-06-02 21:47:50,610 INFO     ___FILE_ONLY___    
+2018-06-02 21:47:50,611 INFO     ___FILE_ONLY___ 35.233.249.225
+2018-06-02 21:47:50,611 INFO     ___FILE_ONLY___   
+2018-06-02 21:47:50,611 INFO     ___FILE_ONLY___ RUNNING
+2018-06-02 21:47:50,611 INFO     ___FILE_ONLY___ 
+
+2018-06-02 21:47:50,611 INFO     ___FILE_ONLY___ nfs
+2018-06-02 21:47:50,611 INFO     ___FILE_ONLY___               
+2018-06-02 21:47:50,611 INFO     ___FILE_ONLY___ us-west1-a
+2018-06-02 21:47:50,611 INFO     ___FILE_ONLY___   
+2018-06-02 21:47:50,611 INFO     ___FILE_ONLY___ f1-micro
+2018-06-02 21:47:50,612 INFO     ___FILE_ONLY___                    
+2018-06-02 21:47:50,612 INFO     ___FILE_ONLY___ 10.138.0.8
+2018-06-02 21:47:50,612 INFO     ___FILE_ONLY___                    
+2018-06-02 21:47:50,612 INFO     ___FILE_ONLY___ TERMINATED
+2018-06-02 21:47:50,612 INFO     ___FILE_ONLY___ 
+
+2018-06-02 21:47:50,612 INFO     ___FILE_ONLY___ postgres
+2018-06-02 21:47:50,612 INFO     ___FILE_ONLY___          
+2018-06-02 21:47:50,613 INFO     ___FILE_ONLY___ us-west1-a
+2018-06-02 21:47:50,613 INFO     ___FILE_ONLY___   
+2018-06-02 21:47:50,613 INFO     ___FILE_ONLY___ f1-micro
+2018-06-02 21:47:50,613 INFO     ___FILE_ONLY___                    
+2018-06-02 21:47:50,613 INFO     ___FILE_ONLY___ 10.138.0.9
+2018-06-02 21:47:50,613 INFO     ___FILE_ONLY___    
+2018-06-02 21:47:50,613 INFO     ___FILE_ONLY___ 104.196.237.8
+2018-06-02 21:47:50,613 INFO     ___FILE_ONLY___    
+2018-06-02 21:47:50,614 INFO     ___FILE_ONLY___ RUNNING
+2018-06-02 21:47:50,614 INFO     ___FILE_ONLY___ 
+
+2018-06-02 21:47:50,614 INFO     ___FILE_ONLY___ rpm-3
+2018-06-02 21:47:50,614 INFO     ___FILE_ONLY___             
+2018-06-02 21:47:50,614 INFO     ___FILE_ONLY___ us-west1-a
+2018-06-02 21:47:50,614 INFO     ___FILE_ONLY___   
+2018-06-02 21:47:50,614 INFO     ___FILE_ONLY___ f1-micro
+2018-06-02 21:47:50,614 INFO     ___FILE_ONLY___                    
+2018-06-02 21:47:50,614 INFO     ___FILE_ONLY___ 10.138.0.10
+2018-06-02 21:47:50,615 INFO     ___FILE_ONLY___                   
+2018-06-02 21:47:50,615 INFO     ___FILE_ONLY___ TERMINATED
+2018-06-02 21:47:50,615 INFO     ___FILE_ONLY___ 
+
+2018-06-02 21:47:50,615 INFO     ___FILE_ONLY___ rpm-server
+2018-06-02 21:47:50,615 INFO     ___FILE_ONLY___        
+2018-06-02 21:47:50,615 INFO     ___FILE_ONLY___ us-west1-a
+2018-06-02 21:47:50,615 INFO     ___FILE_ONLY___   
+2018-06-02 21:47:50,616 INFO     ___FILE_ONLY___ f1-micro
+2018-06-02 21:47:50,616 INFO     ___FILE_ONLY___                    
+2018-06-02 21:47:50,616 INFO     ___FILE_ONLY___ 10.138.0.13
+2018-06-02 21:47:50,616 INFO     ___FILE_ONLY___                   
+2018-06-02 21:47:50,616 INFO     ___FILE_ONLY___ TERMINATED
+2018-06-02 21:47:50,616 INFO     ___FILE_ONLY___ 
+
+2018-06-02 21:47:50,616 INFO     ___FILE_ONLY___ rpmbuild-server
+2018-06-02 21:47:50,617 INFO     ___FILE_ONLY___   
+2018-06-02 21:47:50,617 INFO     ___FILE_ONLY___ us-west1-a
+2018-06-02 21:47:50,617 INFO     ___FILE_ONLY___   
+2018-06-02 21:47:50,617 INFO     ___FILE_ONLY___ f1-micro
+2018-06-02 21:47:50,617 INFO     ___FILE_ONLY___                    
+2018-06-02 21:47:50,617 INFO     ___FILE_ONLY___ 10.138.0.4
+2018-06-02 21:47:50,617 INFO     ___FILE_ONLY___    
+2018-06-02 21:47:50,617 INFO     ___FILE_ONLY___ 35.203.141.253
+2018-06-02 21:47:50,618 INFO     ___FILE_ONLY___   
+2018-06-02 21:47:50,618 INFO     ___FILE_ONLY___ RUNNING
+2018-06-02 21:47:50,618 INFO     ___FILE_ONLY___ 
+
+2018-06-02 21:47:50,618 INFO     ___FILE_ONLY___ rsyslog
+2018-06-02 21:47:50,618 INFO     ___FILE_ONLY___           
+2018-06-02 21:47:50,618 INFO     ___FILE_ONLY___ us-west1-a
+2018-06-02 21:47:50,618 INFO     ___FILE_ONLY___   
+2018-06-02 21:47:50,618 INFO     ___FILE_ONLY___ f1-micro
+2018-06-02 21:47:50,619 INFO     ___FILE_ONLY___                    
+2018-06-02 21:47:50,619 INFO     ___FILE_ONLY___ 10.138.0.3
+2018-06-02 21:47:50,619 INFO     ___FILE_ONLY___    
+2018-06-02 21:47:50,619 INFO     ___FILE_ONLY___ 35.197.88.110
+2018-06-02 21:47:50,619 INFO     ___FILE_ONLY___    
+2018-06-02 21:47:50,619 INFO     ___FILE_ONLY___ RUNNING
+2018-06-02 21:47:50,619 INFO     ___FILE_ONLY___ 
+
+2018-06-02 21:47:50,621 DEBUG    root            SDK update checks are disabled.

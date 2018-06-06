@@ -1,0 +1,7 @@
+2018-06-01 05:39:05,577 DEBUG    root            Loaded Command Group: [u'gcloud', u'config']
+2018-06-01 05:39:05,579 DEBUG    root            Loaded Command Group: [u'gcloud', u'config', u'set']
+2018-06-01 05:39:05,582 DEBUG    root            Running [gcloud.config.set] with arguments: [SECTION/PROPERTY: "account", VALUE: "Fadil.Jemal@seattlecolleges.edu"]
+2018-06-01 05:39:05,583 INFO     ___FILE_ONLY___ Updated property [core/account].
+
+2018-06-01 05:39:05,583 INFO     root            Display format: "default"
+2018-06-01 05:39:05,589 DEBUG    root            SDK update checks are disabled.

@@ -1,0 +1,7 @@
+2018-06-02 21:47:15,574 DEBUG    root            Loaded Command Group: [u'gcloud', u'config']
+2018-06-02 21:47:15,576 DEBUG    root            Loaded Command Group: [u'gcloud', u'config', u'set']
+2018-06-02 21:47:15,579 DEBUG    root            Running [gcloud.config.set] with arguments: [SECTION/PROPERTY: "compute/zone", VALUE: "us-west1-a"]
+2018-06-02 21:47:15,580 INFO     ___FILE_ONLY___ Updated property [compute/zone].
+
+2018-06-02 21:47:15,580 INFO     root            Display format: "default"
+2018-06-02 21:47:15,586 DEBUG    root            SDK update checks are disabled.

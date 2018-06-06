@@ -1,0 +1,30 @@
+2018-06-01 05:39:03,926 DEBUG    root            Loaded Command Group: [u'gcloud', u'alpha', u'billing']
+2018-06-01 05:39:03,927 DEBUG    root            Loaded Command Group: [u'gcloud', u'alpha', u'billing', u'projects']
+2018-06-01 05:39:03,929 DEBUG    root            Loaded Command Group: [u'gcloud', u'alpha', u'billing', u'projects', u'link']
+2018-06-01 05:39:03,933 DEBUG    root            Running [gcloud.alpha.billing.projects.link] with arguments: [--billing-account: "013283-D06D10-B9064D", PROJECT_ID: "devops-203203"]
+2018-06-01 05:39:04,929 INFO     root            Display format: "default"
+2018-06-01 05:39:04,930 INFO     ___FILE_ONLY___ billingAccountName
+2018-06-01 05:39:04,930 INFO     ___FILE_ONLY___ :
+2018-06-01 05:39:04,930 INFO     ___FILE_ONLY___  
+2018-06-01 05:39:04,931 INFO     ___FILE_ONLY___ billingAccounts/013283-D06D10-B9064D
+2018-06-01 05:39:04,931 INFO     ___FILE_ONLY___ 
+
+2018-06-01 05:39:04,931 INFO     ___FILE_ONLY___ billingEnabled
+2018-06-01 05:39:04,931 INFO     ___FILE_ONLY___ :
+2018-06-01 05:39:04,931 INFO     ___FILE_ONLY___  
+2018-06-01 05:39:04,931 INFO     ___FILE_ONLY___ true
+2018-06-01 05:39:04,931 INFO     ___FILE_ONLY___ 
+
+2018-06-01 05:39:04,932 INFO     ___FILE_ONLY___ name
+2018-06-01 05:39:04,932 INFO     ___FILE_ONLY___ :
+2018-06-01 05:39:04,932 INFO     ___FILE_ONLY___  
+2018-06-01 05:39:04,932 INFO     ___FILE_ONLY___ projects/devops-203203/billingInfo
+2018-06-01 05:39:04,932 INFO     ___FILE_ONLY___ 
+
+2018-06-01 05:39:04,932 INFO     ___FILE_ONLY___ projectId
+2018-06-01 05:39:04,932 INFO     ___FILE_ONLY___ :
+2018-06-01 05:39:04,932 INFO     ___FILE_ONLY___  
+2018-06-01 05:39:04,933 INFO     ___FILE_ONLY___ devops-203203
+2018-06-01 05:39:04,933 INFO     ___FILE_ONLY___ 
+
+2018-06-01 05:39:04,934 DEBUG    root            SDK update checks are disabled.

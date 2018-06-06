@@ -1,0 +1,24 @@
+2018-06-02 20:54:26,722 DEBUG    root            Loaded Command Group: [u'gcloud', u'compute', u'instances']
+2018-06-02 20:54:26,800 DEBUG    root            Loaded Command Group: [u'gcloud', u'compute', u'instances', u'create']
+2018-06-02 20:54:26,809 DEBUG    root            Running [gcloud.compute.instances.create] with arguments: [INSTANCE_NAMES:1: "[u'projects/devops-203203']"]
+2018-06-02 20:54:27,447 DEBUG    root            (gcloud.compute.instances.create) Could not fetch resource:
+ - Invalid value for field 'resource.name': 'projects/devops-203203'. Must be a match of regex '(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?)'
+Traceback (most recent call last):
+  File "/usr/lib64/google-cloud-sdk/lib/googlecloudsdk/calliope/cli.py", line 844, in Execute
+    resources = calliope_command.Run(cli=self, args=args)
+  File "/usr/lib64/google-cloud-sdk/lib/googlecloudsdk/calliope/backend.py", line 756, in Run
+    resources = command_instance.Run(args)
+  File "/usr/lib64/google-cloud-sdk/lib/surface/compute/instances/create.py", line 462, in Run
+    return compute_client.MakeRequests(requests)
+  File "/usr/lib64/google-cloud-sdk/lib/googlecloudsdk/api_lib/compute/client_adapter.py", line 93, in MakeRequests
+    errors, error_message='Could not fetch resource:')
+  File "/usr/lib64/google-cloud-sdk/lib/googlecloudsdk/api_lib/compute/utils.py", line 108, in RaiseToolException
+    RaiseException(problems, calliope_exceptions.ToolException, error_message)
+  File "/usr/lib64/google-cloud-sdk/lib/googlecloudsdk/api_lib/compute/utils.py", line 120, in RaiseException
+    errors))
+ToolException: Could not fetch resource:
+ - Invalid value for field 'resource.name': 'projects/devops-203203'. Must be a match of regex '(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?)'
+
+2018-06-02 20:54:27,506 ERROR    root            (gcloud.compute.instances.create) Could not fetch resource:
+ - Invalid value for field 'resource.name': 'projects/devops-203203'. Must be a match of regex '(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?)'
+

@@ -1,0 +1,2 @@
+2018-06-01 03:48:57,254 DEBUG    root            Loaded Command Group: [u'gcloud', u'compute', u'scp']
+2018-06-01 03:48:57,258 ERROR    root            (gcloud.compute.scp) unrecognized arguments: --command

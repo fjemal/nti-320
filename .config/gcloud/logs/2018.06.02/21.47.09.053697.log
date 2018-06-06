@@ -1,0 +1,13 @@
+2018-06-02 21:47:09,055 DEBUG    root            Loaded Command Group: [u'gcloud', u'auth']
+2018-06-02 21:47:09,057 DEBUG    root            Loaded Command Group: [u'gcloud', u'auth', u'login']
+2018-06-02 21:47:09,060 DEBUG    root            Running [gcloud.auth.login] with arguments: [--no-launch-browser: "False", ACCOUNT: "Fadil.Jemal@seattlecolleges.edu"]
+2018-06-02 21:47:11,559 WARNING  root            `gcloud auth login` no longer writes application default credentials.
+If you need to use ADC, see:
+  gcloud auth application-default --help
+2018-06-02 21:47:11,560 INFO     ___FILE_ONLY___ 
+You are now logged in as [Fadil.Jemal@seattlecolleges.edu].
+Your current project is [devops-203203].  You can change this setting by running:
+  $ gcloud config set project PROJECT_ID
+
+2018-06-02 21:47:11,561 INFO     root            Display format: "none"
+2018-06-02 21:47:11,567 DEBUG    root            SDK update checks are disabled.

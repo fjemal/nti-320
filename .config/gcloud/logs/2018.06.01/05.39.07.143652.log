@@ -1,0 +1,7 @@
+2018-06-01 05:39:07,145 DEBUG    root            Loaded Command Group: [u'gcloud', u'config']
+2018-06-01 05:39:07,147 DEBUG    root            Loaded Command Group: [u'gcloud', u'config', u'set']
+2018-06-01 05:39:07,150 DEBUG    root            Running [gcloud.config.set] with arguments: [SECTION/PROPERTY: "project", VALUE: "devops-203203"]
+2018-06-01 05:39:07,151 INFO     ___FILE_ONLY___ Updated property [core/project].
+
+2018-06-01 05:39:07,151 INFO     root            Display format: "default"
+2018-06-01 05:39:07,157 DEBUG    root            SDK update checks are disabled.

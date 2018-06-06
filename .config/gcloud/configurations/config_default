@@ -1,0 +1,8 @@
+[core]
+account = Fadil.Jemal@seattlecolleges.edu
+project = devops-203203
+
+[compute]
+zone = us-west1-a
+region = us-west1
+
