@@ -125,7 +125,7 @@ define service{
         host_name                       cacti-server
         service_description             Current Load
         check_command			              check_nrpe!check_load!5.0,4.0,3.0!10.0,6.0,4.0
-        }
+echo '# check_nrpe command definition        
 define command{
         command_name check_nrpe
         command_line $USER1$/check_nrpe -H $HOSTADDRESS$ -c $ARG1$
