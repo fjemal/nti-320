@@ -126,7 +126,10 @@ define service{
         service_description             Current Load
         check_command			              check_nrpe!check_load!5.0,4.0,3.0!10.0,6.0,4.0
         }
-
+define command{
+        command_name check_nrpe
+        command_line $USER1$/check_nrpe -H $HOSTADDRESS$ -c $ARG1$
+}
 # Define a service to check SSH on the cacti-server machine.
 # Disable notifications for this service by default, as not all users may have SSH enabled.
 
