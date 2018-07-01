@@ -1,20 +1,31 @@
 #!/bin/bash
 # If you don't want to use redhat-release rpm package you can create directory hierarchy manually, use the following steps.
 sudo yum -y install rpm-build make gcc git
+yum install nfs-utils -y
 mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
 echo '%_topdir %(echo $HOME)/rpmbuild' > ~/.rpmmacros
 
 sudo yum -y install yum-utils wget
 cd /home/fadil_jemal
-wget https://raw.git
-wget https://raw.git nic
-cd /home/fadil_jemal
-mv startup-0.1.tar.gz\?raw\=true startup-0.1.tar.gz
-cp /home/fadil_jemal/st
+wget https://github.com/nic-instruction/NTI-320/blob/master/Final/nti-320-plugins-0.1.tar.gz?raw=true
+wget https://raw.githubusercontent.com/nic-instruction/NTI-320/master/Final/nti-320-plugins.spec
+cd /home/fadil_jemal/nti-320-plugins.spec /root/rpmbuild/SPECS
+#mv startup-0.1.tar.gz\?raw\=true startup-0.1.tar.gz
+cp /home/fadil_jemal/nti-320-plugins.spec /root/rpmbuild/SPECS
 
+mv nti-320-plugins-0.1.tar.gz?raw=true nti-320-plugins-0.1.tar.gz
+cp /home/fadil_jemal/nti-320-plugins-0.1.tar.gz /root/rpmbuild/SOURCES
 #Create a directory with some sample files or scripts that you like to build in the package:
-mkdir check_plugin-0.1
-cd check_plugin-0.1
+sleep 15
+sudo cd /root/rpmbuild
+sudo rpmbuild -v -bb --clean SPECS/nti-320-plugins.spec
+mkdir /mnt/nfs
+echo "1.2.3.4:/var/nfsshare/home_dirs  /mnt/nfs  nfs     defaults 0 0" >> /etc/fstab
+mount -a
+cp /root/rpmbuild/RPMS/x86_64/*.rpm /mnt/nfs
+
+#mkdir check_plugin-0.1
+#cd check_plugin-0.1
 #create simple file in shell
 sudo sed -i 's,enabled=0,enabled=1,g' /etc/yum.repos.d/CentOS-Sources.repo
 
