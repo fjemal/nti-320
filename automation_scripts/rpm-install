@@ -26,7 +26,7 @@ echo "Cloning fadil's's github..."
 yum -y install git
 git clone https://github.com/fjemal/nti-320.git
 
-chmod +x /nti-320/automation_scripts/add_yum_repo.sh
+chmod +x /nti-320/automation_scripts/yum_repo.sh
 chmod +x /nti-320/automation_scripts/nagios_remote.sh
 ./nti-320/automation_scripts/nagios_remote.sh
 ./nti-320/automation_scripts/yum_repo.sh
