@@ -68,7 +68,7 @@ sed -i 's/#//g' /etc/cron.d/cacti
 cp /etc/php.ini /etc/php.ini.orig
 # vi /etc/php.ini
 # line 878: uncomment and add your timezone
-sed -i "s/#date.timezone = /date.timezone = America\/Regina/,g" /etc/php.ini
+sed -i 's/#date.timezone = /date.timezone = America\/Regina/,g' /etc/php.ini
 
  systemctl restart httpd 
 
