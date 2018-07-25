@@ -51,8 +51,12 @@ sed -i 's/Allow from localhost/Allow from all/g' /etc/httpd/conf.d/cacti.conf
 
 # create sed lines to change username and password for cacti
 #vim /etc/cacti/db.php
-sed -i 's/$database_username = "cactiuser";/$database_username = "cacti";/,g' /etc/cacti/db.php
-sed -i 's/$database_password = "cactipass";/$database_password = "nti320";/,g' /etc/cacti/db.php
+#sed -i 's/$database_username = "cactiuser";/$database_username = "cacti";/,g' /etc/cacti/db.php
+sed -i "s/\$database_username = 'cactiuser';/\$database_username = 'cacti';/" /etc/cacti/db.php
+
+#sed -i 's/$database_password = "cactipass";/$database_password = "nti320";/,g' /etc/cacti/db.php
+sed -i "s/\$database_password = 'cactipass';/\$database_password = 'P@ssw0rd1';/" /etc/cacti/db.php
+
 
 # restart httpd service
 systemctl restart httpd.service
@@ -64,7 +68,7 @@ sed -i 's/#//g' /etc/cron.d/cacti
 cp /etc/php.ini /etc/php.ini.orig
 # vi /etc/php.ini
 # line 878: uncomment and add your timezone
-sed -i 's/#date.timezone = /date.timezone = America\/Regina/,g' /etc/php.ini
+sed -i "s/#date.timezone = /date.timezone = America\/Regina/,g" /etc/php.ini
 
  systemctl restart httpd 
 
