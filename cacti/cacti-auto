@@ -55,7 +55,7 @@ sed -i 's/Allow from localhost/Allow from all/g' /etc/httpd/conf.d/cacti.conf
 sed -i "s/\$database_username = 'cactiuser';/\$database_username = 'cacti';/" /etc/cacti/db.php
 
 #sed -i 's/$database_password = "cactipass";/$database_password = "nti320";/,g' /etc/cacti/db.php
-sed -i "s/\$database_password = 'cactipass';/\$database_password = 'P@ssw0rd1';/" /etc/cacti/db.php
+sed -i "s/\$database_password = 'cactipass';/\$database_password = 'nti320';/" /etc/cacti/db.php
 
 
 # restart httpd service
